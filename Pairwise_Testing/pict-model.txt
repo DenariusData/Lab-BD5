@@ -1,0 +1,14 @@
+# Modelo PICT (Microsoft Pairwise Independent Combinatorial Testing tool)
+#
+# Como rodar (gera os 9 casos que cobrem todos os pares):
+#   pict pict-model.txt
+#
+# A saída será uma tabela com aproximadamente 9 linhas — exatamente os mesmos
+# casos usados em CheckoutPairwiseTest. Cada linha é um caso de teste que,
+# em conjunto, cobre todos os pares possíveis entre os parâmetros.
+#
+# Download do PICT: https://github.com/microsoft/pict
+
+pagamento: Cartao, Pix, Boleto
+frete:     Normal, Expresso, Economico
+perfil:    Novo, Recorrente, VIP
