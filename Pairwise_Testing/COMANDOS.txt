@@ -1,0 +1,36 @@
+============================================================
+ GUIA DE COMANDOS - Pairwise Testing
+============================================================
+
+PASSO 0 - Apontar o Java (se necessario)
+
+    $env:JAVA_HOME="C:\Program Files\Java\jdk-21.0.10"
+
+------------------------------------------------------------
+PASSO 1 - Rodar todos os testes
+
+    .\mvnw.cmd test
+
+    (alternativa com Maven portatil:)
+    & "$env:USERPROFILE\apache-maven-3.9.9\bin\mvn.cmd" test
+
+------------------------------------------------------------
+PASSO 2 - Demonstrar o bug
+
+    1) Abrir: src\main\java\com\denariusdata\pairwise\CheckoutService.java
+    2) Trocar  BUG_PROPOSITAL = false  por  BUG_PROPOSITAL = true  e salvar
+    3) Rodar:  .\mvnw.cmd test    (falha no "Caso 5: Pix + Expresso + VIP")
+    4) Voltar  BUG_PROPOSITAL = false  e salvar
+
+------------------------------------------------------------
+PASSO 3 - Gerar os 9 casos com o PICT
+
+    .\pict.exe pict-model.txt /r:5
+
+============================================================
+ RESUMO
+============================================================
+    $env:JAVA_HOME="C:\Program Files\Java\jdk-21.0.10"
+    .\mvnw.cmd test
+    .\pict.exe pict-model.txt /r:5
+============================================================

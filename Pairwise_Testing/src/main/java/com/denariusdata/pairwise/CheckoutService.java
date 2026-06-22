@@ -26,18 +26,8 @@ public class CheckoutService {
      *
      * Troque para "true" para ver o teste Pairwise falhar no caso 5.
      */
-    static final boolean BUG_PROPOSITAL = false;
+    static final boolean BUG_PROPOSITAL = true;
 
-    /**
-     * Calcula o total do checkout aplicando frete e descontos.
-     *
-     * @param subtotal  valor base (ex.: 100)
-     * @param pagamento "Cartao", "Pix" ou "Boleto"
-     * @param frete     "Normal", "Expresso" ou "Economico"
-     * @param perfil    "Novo", "Recorrente" ou "VIP"
-     * @return total calculado
-     * @throws IllegalArgumentException se algum valor for inválido
-     */
     public double calcularTotal(double subtotal, String pagamento, String frete, String perfil) {
         // Frete somado ao subtotal
         double valorFrete;
@@ -68,9 +58,6 @@ public class CheckoutService {
 
         double total = (subtotal + valorFrete) * fatorPerfil * fatorPagamento;
 
-        // --- BUG PROPOSITAL: falha de integração entre DOIS parâmetros ---
-        // Só dispara quando pagamento == "Pix" E frete == "Expresso".
-        // É proposital para demonstrar que o Pairwise (9 casos) detecta o defeito.
         if (BUG_PROPOSITAL && pagamento.equals("Pix") && frete.equals("Expresso")) {
             total += 999;
         }

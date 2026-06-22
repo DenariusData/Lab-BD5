@@ -1,11 +1,16 @@
 # Modelo PICT (Microsoft Pairwise Independent Combinatorial Testing tool)
 #
 # Como rodar (gera os 9 casos que cobrem todos os pares):
-#   pict pict-model.txt
+#   pict.exe pict-model.txt /r:5
 #
-# A saída será uma tabela com aproximadamente 9 linhas — exatamente os mesmos
-# casos usados em CheckoutPairwiseTest. Cada linha é um caso de teste que,
-# em conjunto, cobre todos os pares possíveis entre os parâmetros.
+# A saída é uma tabela com 9 linhas — exatamente os mesmos casos usados em
+# CheckoutPairwiseTest. Cada linha é um caso de teste que, em conjunto, cobre
+# todos os pares possíveis entre os parâmetros.
+#
+# OBS sobre o /r:5 : o PICT usa uma heurística e, dependendo da ordem interna,
+# pode gerar 9 OU 10 casos. O mínimo teórico para 3 parâmetros x 3 valores é 9.
+# A semente /r:5 produz a solução ótima de 9 casos, idêntica à do teste.
+# Sem /r o resultado também é válido (cobre todos os pares), só pode ter 10 linhas.
 #
 # Download do PICT: https://github.com/microsoft/pict
 
